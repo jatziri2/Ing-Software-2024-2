@@ -1,3 +1,4 @@
+#Funcion de valles
 def contar_valles(pasos):
     nivel_del_mar = 0
     nivel_actual = 0
@@ -84,21 +85,3 @@ class ArbolBinarioOrdenado:
         else:
             return []
 
-
-# Pruebas para la función contar_valles y la clase ArbolBinarioOrdenado
-if __name__ == "__main__":
-    # Prueba de contar_valles
-    ejemplo = "DDDUUUDDDUUU"
-    resultado = contar_valles(ejemplo)
-    print(f"El numero de valles atravesados es: {resultado}") 
-
-    # Pruebas para la clase ArbolBinarioOrdenado
-    arbol = ArbolBinarioOrdenado()
-    elementos_para_agregar = [5, 3, 7, 2, 4, 6, 8]
-    
-    for elemento in elementos_para_agregar:
-        arbol.agregar_elemento(elemento)
-
-    print("Recorrido Preorden:", arbol.recorrido_preorden())
-    print("Recorrido Inorden:", arbol.recorrido_inorden())
-    print("Recorrido Postorden:", arbol.recorrido_postorden())
