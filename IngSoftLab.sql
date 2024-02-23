@@ -6,10 +6,14 @@ grant all privileges on lab_ing_software.* to 'lab'@'localhost'
 with grant option;
 
 use lab_ing_software;
-
+SELECT * FROM rentar;
+SELECT * FROM peliculas;
+SELECT * FROM usuarios;
 CREATE TABLE `usuarios` (
   `idUsuario` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(200) NOT NULL,
+  `apPat` varchar(200) NOT NULL,
+  `apMat` varchar(200), 
   `password` varchar(64) NOT NULL,
   `email` varchar(500) DEFAULT NULL,
   `profilePicture` longblob,
