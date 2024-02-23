@@ -27,16 +27,16 @@ nombres_peliculas = ["El Padrino", "Titanic", "Inception", "La La Land", "Jurass
                      "The Shawshank Redemption"]
 # Connect to the database
 connection = pymysql.connect(host='localhost',
-                             user='root',
-                             password='tupassword',
+                             user='lab',
+                             password='Developer123!',
                              database='lab_ing_software',
                              cursorclass=pymysql.cursors.DictCursor)
 
 def create(table_name, data):
     # Conexión a la base de datos (ajusta los parámetros según tu configuración)
     connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='tupassword',
+                                 user='lab',
+                                 password='Developer123!',
                                  database='lab_ing_software',
                                  cursorclass=pymysql.cursors.DictCursor)
 
@@ -77,8 +77,8 @@ def fecha_random(start_date, end_date):
 def insertar_en_tablas():
     # Conexión a la base de datos (ajusta los parámetros según tu configuración)
     connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='tupassword',
+                                 user='lab',
+                                 password='Developer123!',
                                  database='lab_ing_software',
                                  cursorclass=pymysql.cursors.DictCursor)
 
@@ -140,8 +140,8 @@ def insertar_en_tablas():
 def filtrar_usuarios_por_apellido(apellido):
     # Conexión a la base de datos (ajusta los parámetros según tu configuración)
     connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='tupassword',
+                                 user='lab',
+                                 password='Developer123!',
                                  database='lab_ing_software',
                                  cursorclass=pymysql.cursors.DictCursor)
 
@@ -165,8 +165,8 @@ def filtrar_usuarios_por_apellido(apellido):
 def cambiar_genero_pelicula(nombre_pelicula, nuevo_genero):
     # Conexión a la base de datos (ajusta los parámetros según tu configuración)
     connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='tupassword',
+                                 user='lab',
+                                 password='Developer123!',
                                  database='lab_ing_software',
                                  cursorclass=pymysql.cursors.DictCursor)
 
@@ -198,8 +198,8 @@ def cambiar_genero_pelicula(nombre_pelicula, nuevo_genero):
 def eliminar_rentas_anteriores():
     # Conexión a la base de datos (ajusta los parámetros según tu configuración)
     connection = pymysql.connect(host='localhost',
-                                 user='root',
-                                 password='tupassword',
+                                 user='lab',
+                                 password='Developer123!',
                                  database='lab_ing_software',
                                  cursorclass=pymysql.cursors.DictCursor)
 

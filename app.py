@@ -11,7 +11,7 @@ from model.model_peliculas import ver_registros_peliculas, filtrar_pelicula_por_
 from model.model_usuarios import ver_registros_usuarios, filtrar_usuario_por_id, cambiar_nombre_usuario, eliminar_usuario_por_id, eliminar_todos_los_usuarios
 from model.model_rentar import ver_registros_rentas, filtrar_renta_por_id, cambiar_fecha_renta, eliminar_renta_por_id, eliminar_todas_las_rentas
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:tupassword@localhost:3306/lab_ing_software'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://lab:Developer123!@localhost:3306/lab_ing_software'
 app.config.from_mapping(
     SECRET_KEY='dev'
 )
