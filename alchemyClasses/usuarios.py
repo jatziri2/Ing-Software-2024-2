@@ -14,7 +14,7 @@ class usuarios(db.Model):
     email = Column(String(500), nullable=True, unique=True)
     profilePicture = Column(LargeBinary, nullable=True)
     superUser = Column(Integer, nullable=True) 
-
+	
     def __init__(self, nombre, apPat, password, apMat=None, email=None, profilePicture=None, superUser=None):
         self.nombre = nombre
         self.apPat = apPat
@@ -25,4 +25,4 @@ class usuarios(db.Model):
         self.superUser = superUser
 
     def __str__(self):
-        return f'Nombre:{self.nombre}\nEmail:{self.email}\n'
+        return f'Nombre:{self.nombre}{self.apPat}{self.apMat}\nEmail:{self.email}\n'
