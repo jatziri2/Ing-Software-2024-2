@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" href="Style/custom-style.css">
+    <style>
+        .card {
+            max-width: 20rem;
+            background-color: black;
+            color: white;
+        }
+
+        .card-header {
+            background-color: red;
+            color: white;
+            border-color: red;
+        }
+
+        .card-body {
+            background-color: black;
+            color: white;
+        }
+
+        .card-margin-bottom {
+            margin-bottom: 20px; /* Ajusta según sea necesario */
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white">
+
+    <nav class="navbar bg-danger text-white">
+    </nav>
+    <div>
+        <h1 class="text-danger mt-5 text-center">CLONBUSTER</h1>
+    </div>
+
+    <div class="container d-flex align-items-center justify-content-center centrar mt-4">
+        <div class="row ancho">
+
+            <!-- Primer Bloque -->
+            <div class="col-md-4">
+                <div class="card text-dark bg-dark mb-3 border-danger shadow-lg card-margin-bottom">
+                    <div class="card-header bg-danger text-white text-center">
+                        Pelicula
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title" style="color: red;">Elija una opcion:</h4>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Registrar película</a>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Ver películas</a>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Actualizar película</a>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Eliminar película</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segundo Bloque -->
+            <div class="col-md-4">
+                <div class="card text-dark bg-dark mb-3 border-danger shadow-lg card-margin-bottom">
+                    <div class="card-header bg-danger text-white text-center">
+                        Renta
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title" style="color: red;">Elija una opcion:</h4>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Registrar renta</a>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Ver rentas</a>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Actualizar estado de renta</a>
+                        <a class="btn btn-outline-info" href="#" style="color: white; border-color: red;">Eliminar renta</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tercer Bloque -->
+            <div class="col-md-4">
+                <div class="card text-dark bg-dark mb-3 border-danger shadow-lg card-margin-bottom">
+                    <div class="card-header bg-danger text-white text-center">
+                        Usuario
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title" style="color: red;">Elija una opcion:</h4>
+                        <a href="usuario/registro" class="btn btn-outline-info" style="color: white; border-color: red;">Registrar usuario</a>
+                        <a href="usuario/usuarios" class="btn btn-outline-info" style="color: white; border-color: red;">Ver clientes</a>
+                        <a href="usuario/actualizar" class="btn btn-outline-info" style="color: white; border-color: red;">Actualizar usuario</a>
+                        <a href="usuario/borrar" class="btn btn-outline-info" style="color: white; border-color: red;">Eliminar usuario</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

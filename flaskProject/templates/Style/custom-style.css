@@ -1,0 +1,34 @@
+/* custom-style.css */
+body {
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+}
+
+.navbar {
+    background-color: red; /* Barra de navegación roja */
+}
+
+.card-header {
+    background-color: red; /* Encabezado de tarjeta rojo */
+    color: white; /* Texto en el encabezado de tarjeta blanco */
+}
+
+.card.text-dark.bg-light {
+    background-color: black; /* Fondo de tarjeta negro */
+    color: white; /* Texto en tarjeta blanco */
+}
+
+.card-header.bg-info.text-white {
+    background-color: red; /* Encabezado de tarjeta azul */
+    color: white; /* Texto en el encabezado de tarjeta blanco */
+}
+
+.btn.btn-outline-info {
+    color: white; /* Texto de botones blanco */
+    border-color: red; /* Borde de botones rojo */
+}
+
+.btn.btn-outline-info:hover {
+    background-color: red; /* Fondo de botones rojo al pasar el mouse */
+    color: white; /* Texto de botones blanco al pasar el mouse */
+}
