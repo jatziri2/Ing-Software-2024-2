@@ -21,12 +21,10 @@ def crear_usuario():
         password = request.form["password"]
         print(password)
         
-        if 'superuser' in request.form:
-            superuser = 1
+        if 'superUser' in request.form:
+            superuser = int(request.form["superUser"])
         else:
             superuser = 0
-        print(superuser)
-            
         
         retorno = mu.crear_usuario(nombre, apellidoP, password, apellidoM, correo, None, superuser)
         
@@ -52,7 +50,7 @@ def eliminar_usuario():
 @usuario_blueprint.route('/actualizar', methods=['GET', 'POST'])
 def actualizar_usuario():
     if request.method == "GET":
-        return render_template('actualizarUsuario2.html')
+        return render_template('actualizarUsuario.html')
     else:
         id = request.form["userId"]
         print(id)
@@ -69,14 +67,12 @@ def actualizar_usuario():
         
         if 'superUser' in request.form:
             superuser_value = request.form["superUser"]
-            if superuser_value == 1 or superuser_value == 0:
-                superuser = superuser_value
+            if superuser_value == "si":
+                superuser = 1
             else:
-               superuser=None
+                superuser = 0
         else:
-            superuser=None
-            
-            
+            superuser = 0
         
         retorno = mu.editar_usuario(id, nombre, apellidoP, apellidoM, password, correo, None, superuser)
         

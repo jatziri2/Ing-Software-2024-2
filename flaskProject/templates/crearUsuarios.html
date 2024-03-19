@@ -60,18 +60,18 @@
                     <fieldset class="mb-3">
                         <legend class="col-form-label mt-4 text-white">Superusuario</legend>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="superUser" id="superuser_si" value="si" {% if superuser == "si" %}checked{% endif %}>
+                            <input class="form-check-input" type="radio" name="superUser" id="superuser_si" value="1" {% if superuser == "1" %}checked{% endif %}>
                             <label class="form-check-label text-white" for="superuser_si">
                                 Sí
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="superUser" id="superuser_no" value="no" {% if superuser == "no" %}checked{% endif %}>
+                            <input class="form-check-input" type="radio" name="superUser" id="superuser_no" value="0" {% if superuser == "0" %}checked{% endif %}>
                             <label class="form-check-label text-white" for="superuser_no">
                                 No
                             </label>
                         </div>
-                    </fieldset>
+                    </fieldset>                    
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-danger mb-5">Registrar</button>

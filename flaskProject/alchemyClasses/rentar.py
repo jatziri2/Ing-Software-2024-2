@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime, SmallInteger, ForeignKey
+from datetime import datetime, timedelta
 from alchemyClasses import db
 
 class rentar(db.Model):
@@ -19,6 +20,13 @@ class rentar(db.Model):
         self.fecha_renta = fecha_renta
         self.dias_de_renta = dias_de_renta
         self.estatus = estatus
+        
+    def vencida(self):
+        if self.dias_de_renta is None:
+            return False
+        else:
+            fecha_devolucion = self.fecha_renta + timedelta(days=self.dias_de_renta)
+            return (datetime.now() > fecha_devolucion) and (self.estatus == 0)
         
     def __str__(self):
         return f'ID Usuario:{self.idUsuario}\nID Pelicula:{self.idPelicula}\nFecha de renta:{self.fecha_renta}\nDias de renta:{self.dias_de_renta}\nEstatus:{self.estatus}\n'

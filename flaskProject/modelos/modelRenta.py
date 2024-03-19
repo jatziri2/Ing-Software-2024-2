@@ -15,70 +15,40 @@ def crear_renta(idUsuario, idPelicula, fecha_renta, dias_de_renta=5, estatus=0):
 def leer_rentas():
     return rentar.query.all()
 
-def leer_rentas_id(id_rentas):
-    if not id_rentas:
-        print("El ID de la renta es obligatorio")
-        return None
-    renta = rentar.query.get(id_rentas)
-    if renta:
-        print(renta)
-        return str(renta)
-    else:
-        print("La renta no existe")
-        return None
-
-def leer_renta_fecha(fecha):
-    if not fecha:
-        print("La fecha es obligatoria")
-        return None
-    renta = rentar.query.filter(rentar.nombre == fecha).first()
-    if renta:
-        print(renta)
-        return str(renta)
-    else:
-        print("La renta no existe")
-        return None
-
-def actualizar_fecha_renta(idRenta,fecha_nueva):
-    renta = rentar.query.filter(rentar.idRentar == idRenta).first()
-    if renta is not None:
-        renta.dias_de_renta = fecha_nueva
-        db.session.commit()
-    else:
-        print("La renta no existe")
-
-def actualizar_estatus_renta(idRenta, estatus_nuevo):
-    renta = rentar.query.filter(rentar.idRentar == idRenta).first()
-    if renta is not None:
-        renta.estatus = estatus_nuevo
-        db.session.commit()
-        return 0
-    else:
-        print("La renta no existe")
+# Función para actualizar una renta por su ID
+def actualizar_estatus_renta(id, idUsuario=None, idPelicula=None, fecha_renta=None, dias_de_renta=None, estatus=None):
+    renta = rentar.query.get(id)
+    if renta is None:
         return -1
-
-def eliminar_renta(id):
-    if not id:
-        print("El ID de la renta es obligatorio")
-        return
-    renta = leer_rentas_id(id)
-    if renta:
+    else:
+        if idUsuario:
+            renta.idUsuario = idUsuario
+        if idPelicula:
+            renta.idPelicula = idPelicula
+        if fecha_renta:
+            renta.fecha_renta = fecha_renta
+        if dias_de_renta:
+            renta.dias_de_renta = dias_de_renta
+        if estatus is not None:
+            renta.estatus = estatus
         try:
-            db.session.delete(renta)
             db.session.commit()
             return 0
-        except Exception as e:
-            print("Error no pudimos eliminar la renta", e)
+        except:
             return -1
+
+#Eliminar un registro por id
+def eliminar_renta(id_renta):
+    renta = rentar.query.filter(rentar.idRentar == id_renta).first()
+    if renta is not None:
+        db.session.delete(renta)
+        db.session.commit() 
     else:
         print("La renta no existe")
 
+
+#Eliminar todos los registros
 def eliminar_todas_las_rentas():
-    confirmacion = input("¿Estás seguro que deseas eliminar todas las rentas? (s/n): ")
-    if confirmacion.lower() == 's':
-        for renta in rentar.query.all():
-            db.session.delete(renta)
-        db.session.commit()
-        print("Todas las rentas han sido eliminadas")
-    else:
-        print("Operación cancelada")
+    for renta in rentar.query.all():
+        db.session.delete(renta)
+    db.session.commit()
