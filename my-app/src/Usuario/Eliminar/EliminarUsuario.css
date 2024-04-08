@@ -73,3 +73,7 @@
   .botC button.regresarBtn {
     background-color: #13485e; /* Nuevo color de fondo para el botón Editar Usuario */
   }
+  .mensaje-rojo {
+    color: red;
+  }
+  

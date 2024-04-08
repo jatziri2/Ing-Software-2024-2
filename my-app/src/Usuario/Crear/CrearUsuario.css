@@ -1,5 +1,5 @@
 .CrearUsuario {
-  background-color: hsl(203, 55%, 21%);
+    background-color: hsl(203, 55%, 21%);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -69,7 +69,75 @@ h1 {
   border-color: #66afe9;
   box-shadow: 0 0 5px #66afe9;
 }
+.Pedir select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: white; /* Fondo blanco para el select */
+  color: #333; /* Color de texto oscuro */
+}
+
+.Pedir select:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
+
+/* Estilos para el botón de Super Usuario */
+.Pedir button.superUserBtn {
+  padding: 10px 20px; /* Ajusta el padding del botón */
+  font-size: 1em;
+  background-color: #142f4d; /* Cambia el color de fondo del botón */
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.Pedir button.superUserBtn:hover {
+  background-color: #142f4d; /* Cambia el color de fondo al pasar el cursor */
+}
+/* Agrega estos estilos al final de tu archivo CSS */
+
+/* Estilos para el selector de usuario */
+.Pedir select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: white; /* Fondo blanco para el select */
+  color: #333; /* Color de texto oscuro */
+}
+
+.Pedir select:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
+/* Agrega estos estilos al final de tu archivo CSS */
+
+.custom-select-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: white; /* Fondo blanco para el select */
+  color: #333; /* Color de texto oscuro */
+}
+
+.custom-select-container select:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
 
 .botC button.regresarBtn {
   background-color: #13485e; /* Nuevo color de fondo para el botón Editar Usuario */
 }
+
