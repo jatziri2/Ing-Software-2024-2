@@ -70,3 +70,6 @@
     box-shadow: 0 0 5px #66afe9;
   }
   
+  .botC button.regresarBtn {
+    background-color: #13485e; /* Nuevo color de fondo para el botón Editar Usuario */
+  }

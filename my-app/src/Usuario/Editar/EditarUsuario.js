@@ -1,5 +1,4 @@
 import "./EditarUsuario.css";
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -88,16 +87,16 @@ function EditarUsuario({ usuarios, setUsuarios }) {
   };
 
   return (
-    <div className="CrearUsuario">
-      <h1>Modificar Usuario</h1>
+    <div className="EditarUsuario">
+      <h1>Editar Usuario</h1>
       {!usuarioSeleccionado && (
-        <div className="Pedir-container">
-          <div className="Pedir">
-            <br></br>
+        <div className="mensaje">
+          <div className="caja">
+            <br />
             <label htmlFor="usuarioSelect">
-              Selecciona un usuario para modificar
+              Selecciona un usuario para editar
             </label>
-            <br></br>
+            <br />
             <div className="custom-select-container">
               <select
                 className="custom-select"
@@ -128,20 +127,20 @@ function EditarUsuario({ usuarios, setUsuarios }) {
         </div>
       )}
       {usuarioModificado && (
-        <div className="Cajita-container">
-          <div className="Cajita">
-            <p>Usuario modificado</p>
+        <div className="mensaje">
+          <div className="caja">
+            <p>Usuario actualizado :)</p>
             <div className="section">
               <ul className="botC">
-                <button onClick={handleOkClick}>OK</button>
+                <button onClick={handleOkClick}>Regresar</button>
               </ul>
             </div>
           </div>
         </div>
       )}
       {correoEnUso && (
-        <div className="Cajita-container">
-          <div className="Cajita">
+        <div className="mensaje">
+          <div className="caja">
             <p>Correo en uso, intente con otro</p>
             <div className="section">
               <ul className="botC">
@@ -152,8 +151,8 @@ function EditarUsuario({ usuarios, setUsuarios }) {
         </div>
       )}
       {datosFaltantes && (
-        <div className="Cajita-container">
-          <div className="Cajita">
+        <div className="mensaje">
+          <div className="caja">
             <p>
               Por favor complete los campos de nombre, apellido paterno,
               contraseña y correo electrónico
@@ -170,11 +169,11 @@ function EditarUsuario({ usuarios, setUsuarios }) {
         !usuarioModificado &&
         !correoEnUso &&
         !datosFaltantes && (
-          <div>
+          <div className="formulario">
             <form>
-              <div className="Cajita-container">
-                <div className="Cajita">
-                  <br></br>
+              <div className="Pedir-container">
+              <div className="Pedir">
+                  <br />
                   <label htmlFor="nombre">Nombre:</label>
                   <input
                     type="text"
@@ -183,7 +182,8 @@ function EditarUsuario({ usuarios, setUsuarios }) {
                     value={datosUsuario.nombre}
                     onChange={handleChange}
                   />
-                  <br></br>
+                  <br />
+                  <form onSubmit={handleSubmit}></form>
                   <label htmlFor="apPat">Apellido Paterno:</label>
                   <input
                     type="text"
@@ -192,7 +192,7 @@ function EditarUsuario({ usuarios, setUsuarios }) {
                     value={datosUsuario.apPat}
                     onChange={handleChange}
                   />
-                  <br></br>
+                  <br />
                   <label htmlFor="apMat">Apellido Materno:</label>
                   <input
                     type="text"
@@ -201,7 +201,7 @@ function EditarUsuario({ usuarios, setUsuarios }) {
                     value={datosUsuario.apMat}
                     onChange={handleChange}
                   />
-                  <br></br>
+                  <br />
                   <label htmlFor="password">Contraseña:</label>
                   <input
                     type="password"
@@ -210,7 +210,7 @@ function EditarUsuario({ usuarios, setUsuarios }) {
                     value={datosUsuario.password}
                     onChange={handleChange}
                   />
-                  <br></br>
+                  <br />
                   <label htmlFor="email">Email:</label>
                   <input
                     type="email"
@@ -219,7 +219,7 @@ function EditarUsuario({ usuarios, setUsuarios }) {
                     value={datosUsuario.email}
                     onChange={handleChange}
                   />
-                  <br></br>
+                  <br />
                   <label htmlFor="superUser">Super Usuario:</label>
                   <select
                     id="superUser"
@@ -230,10 +230,14 @@ function EditarUsuario({ usuarios, setUsuarios }) {
                     <option value={false}>No</option>
                     <option value={true}>Sí</option>
                   </select>
-                  <br></br>
+                  <br />
                   <div className="section">
                     <ul className="botC">
-                      <button type="button" onClick={handleSubmit}>
+                      <button
+                        type="button"
+                        className="superUserBtn"
+                        onClick={handleSubmit}
+                      >
                         Guardar Cambios
                       </button>
                     </ul>
@@ -246,7 +250,7 @@ function EditarUsuario({ usuarios, setUsuarios }) {
                           state: { usuarios, setUsuarios },
                         }}
                       >
-                        <button>Regresar</button>
+                        <button className="regresarBtn">Regresar</button>
                       </Link>
                     </ul>
                   </div>
@@ -257,6 +261,7 @@ function EditarUsuario({ usuarios, setUsuarios }) {
         )}
     </div>
   );
+
 }
 
 export default EditarUsuario;

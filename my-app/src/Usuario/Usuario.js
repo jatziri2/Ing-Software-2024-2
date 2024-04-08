@@ -15,7 +15,7 @@ function Usuario({ usuarios, setUsuarios, rentas }) {
               state: { usuarios, setUsuarios },
             }}
           >
-            <button>Ver Usuarios</button>
+            <button className="verBtn">Ver Usuarios</button>
           </Link>
         </ul>
         <ul className="botC">
@@ -25,7 +25,7 @@ function Usuario({ usuarios, setUsuarios, rentas }) {
               state: { usuarios, setUsuarios },
             }}
           >
-            <button>Agregar Usuario</button>
+            <button className="agregarBtn">Agregar Usuario</button>
           </Link>
         </ul>
         <ul className="botC">
@@ -35,7 +35,7 @@ function Usuario({ usuarios, setUsuarios, rentas }) {
               state: { usuarios, setUsuarios },
             }}
           >
-            <button>Modificar Usuario</button>
+            <button className="editarBtn">Editar Usuario</button>
           </Link>
         </ul>
         <ul className="botC">
@@ -45,7 +45,7 @@ function Usuario({ usuarios, setUsuarios, rentas }) {
               state: { usuarios, setUsuarios, rentas },
             }}
           >
-            <button>Eliminar Usuario</button>
+            <button className="eliminarBtn">Eliminar Usuario</button>
           </Link>
         </ul>
         <ul className="botC">
@@ -54,7 +54,7 @@ function Usuario({ usuarios, setUsuarios, rentas }) {
               pathname: "/",
             }}
           >
-            <button>Regresar</button>
+            <button className="regresarBtn">Regresar</button>
           </Link>
         </ul>
       </div>

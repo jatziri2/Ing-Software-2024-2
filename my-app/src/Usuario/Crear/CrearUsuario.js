@@ -156,7 +156,7 @@ function CrearUsuario({ usuarios, setUsuarios }) {
                     state: { usuarios, setUsuarios },
                   }}
                 >
-                  <button>Regresar</button>
+                  <button className="regresarBtn">Regresar</button>
                 </Link>
               </ul>
             </div>

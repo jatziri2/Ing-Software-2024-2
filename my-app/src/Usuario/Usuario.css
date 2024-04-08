@@ -60,3 +60,25 @@ tbody {
   color: black;
   background-color: rgba(255, 255, 255, 0.452);
 }
+/* Agrega estos estilos al final de tu archivo CSS */
+
+.botC button.agregarBtn {
+  background-color: #45a3c9; /* Nuevo color de fondo para el botón Agregar Usuario */
+}
+
+.botC button.eliminarBtn {
+  background-color: #45a3c9; /* Nuevo color de fondo para el botón Eliminar Usuario */
+}
+
+.botC button.editarBtn {
+  background-color: #45a3c9; /* Nuevo color de fondo para el botón Editar Usuario */
+}
+
+.botC button.verBtn {
+  background-color: #45a3c9; /* Nuevo color de fondo para el botón Editar Usuario */
+}
+
+.botC button.regresarBtn {
+  background-color: #13485e; /* Nuevo color de fondo para el botón Editar Usuario */
+}
+

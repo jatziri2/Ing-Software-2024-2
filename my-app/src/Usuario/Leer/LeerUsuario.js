@@ -44,7 +44,7 @@ function LeerUsuario({ usuarios, setUsuarios, rentas }) {
       {/* Botón de Regresar */}
       <div className="section">
         <ul className="botC">
-          <button onClick={handleRegresar}>Regresar</button> {/* Usa la función handleRegresar */}
+          <button onClick={handleRegresar} className="regresarBtn">Regresar</button> {/* Usa la función handleRegresar */}
         </ul>
       </div>
     </div>

@@ -95,7 +95,7 @@ function EliminarUsuario({ usuarios, setUsuarios, rentas }) {
       {usuarioConRenta && (
         <div className="Cajita-container">
           <div className="Cajita">
-            <p>El usuario tiene rentas asociadas, no se puede eliminar</p>
+            <p>El usuario no se puede eliminar, esta rentando.</p>
             <div className="section">
               <ul className="botC">
                 <button onClick={handleOkClick}>Ok</button>
@@ -107,14 +107,9 @@ function EliminarUsuario({ usuarios, setUsuarios, rentas }) {
       {usuarioSeleccionado && !usuarioEliminado && !usuarioConRenta && (
         <div className="Cajita-container">
           <div className="Cajita">
-            <p>¿Eliminar al usuario?</p>
-            <p>
-              Nombre: {usuarioSeleccionado.nombre} {usuarioSeleccionado.apPat}{" "}
-              {usuarioSeleccionado.apMat}{" "}
-            </p>
-            <p>Contraseña: {usuarioSeleccionado.password} </p>
-            <p>Correo: {usuarioSeleccionado.email} </p>
-            <p>Super Usuario: {usuarioSeleccionado.superUser ? "Si" : "No"} </p>
+            <p>¿Seguro/a de eliminar al usuario?</p>
+            <p>{usuarioSeleccionado.nombre}{" "}{usuarioSeleccionado.apPat}{" "}
+              {usuarioSeleccionado.apMat}{" "}</p>
             <div className="section">
               <ul className="botC">
                 <button onClick={eliminarUsuario}>Eliminar</button>
@@ -126,7 +121,7 @@ function EliminarUsuario({ usuarios, setUsuarios, rentas }) {
                     state: { usuarios, setUsuarios, rentas },
                   }}
                 >
-                  <button>Regresar</button>
+                  <button className="regresarBtn">Regresar</button>
                 </Link>
               </ul>
             </div>
