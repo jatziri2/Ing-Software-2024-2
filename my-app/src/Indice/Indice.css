@@ -1,0 +1,51 @@
+/* Estilo para la sección principal llamada "Indice" */
+.Indice {
+  background-image: url("../../public/movie-background1.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: calc(14px + 2vmin);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo para el encabezado h1 */
+h1 {
+  color: rgb(255, 209, 63);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: 2.5em;
+}
+
+/* Estilo para el contenedor de los botones */
+.section-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* Estilo para los botones */
+.section-item button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 6px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo para los botones al pasar el cursor sobre ellos */
+.section-item button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
