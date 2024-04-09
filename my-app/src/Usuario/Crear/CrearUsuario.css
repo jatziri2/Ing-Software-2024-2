@@ -1,5 +1,5 @@
 .CrearUsuario {
-    background-color: hsl(203, 55%, 21%);
+  background-color: rgb(58, 58, 59);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ h1 {
    /* Estilos para el botón de agregar */
    padding: 5px 10px;
    font-size: 1em;
-   background-color: #102f44;
+   background-color: #303436;
    color: white;
    border: none;
    cursor: pointer;
@@ -28,7 +28,7 @@ h1 {
 }
 
 .botC button:hover {
-  background-color: #142f4d;
+  background-color: #2e3135;
 }
 
 .Pedir-container {
@@ -89,7 +89,7 @@ h1 {
 .Pedir button.superUserBtn {
   padding: 10px 20px; /* Ajusta el padding del botón */
   font-size: 1em;
-  background-color: #142f4d; /* Cambia el color de fondo del botón */
+  background-color: #000000; /* Cambia el color de fondo del botón */
   color: white;
   border: none;
   cursor: pointer;
@@ -99,7 +99,7 @@ h1 {
 }
 
 .Pedir button.superUserBtn:hover {
-  background-color: #142f4d; /* Cambia el color de fondo al pasar el cursor */
+  background-color: #000000; /* Cambia el color de fondo al pasar el cursor */
 }
 /* Agrega estos estilos al final de tu archivo CSS */
 
@@ -116,8 +116,8 @@ h1 {
 
 .Pedir select:focus {
   outline: none;
-  border-color: #66afe9;
-  box-shadow: 0 0 5px #66afe9;
+  border-color: #484b4e;
+  box-shadow: 0 0 5px #54585c;
 }
 /* Agrega estos estilos al final de tu archivo CSS */
 
@@ -138,6 +138,6 @@ h1 {
 }
 
 .botC button.regresarBtn {
-  background-color: #13485e; /* Nuevo color de fondo para el botón Editar Usuario */
+  background-color: #1a1c1d; /* Nuevo color de fondo para el botón Editar Usuario */
 }
 

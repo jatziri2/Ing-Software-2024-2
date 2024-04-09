@@ -1,6 +1,6 @@
 /* Estilo para la sección principal llamada "Indice" */
 .Indice {
-  background-image: url("../../public/movie-background1.jpeg");
+  background-image: url("../../public/FONDOPANTALLA.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,4 +48,52 @@ h1 {
 /* Estilo para los botones al pasar el cursor sobre ellos */
 .section-item button:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+/* Estilo para el banner inferior */
+.footer-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(92, 97, 102, 0.7);
+  padding: 0px 0;
+}
+
+/* Estilo para el contenedor de los botones en el banner inferior */
+.footer-buttons {
+  display: flex;
+  justify-content: space-around; /* Ajustar el espaciado horizontal entre los botones */
+}
+
+/* Estilo para los botones en el banner inferior */
+.footer-buttons button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 6px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo para los botones al pasar el cursor sobre ellos en el banner inferior */
+.footer-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+/* Estilo para el banner superior central */
+.header-banner {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0px 20px;
+  text-align: center;
+  color: white;
+  font-size: 2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 9999; /* Asegura que el banner esté en la parte superior */
 }

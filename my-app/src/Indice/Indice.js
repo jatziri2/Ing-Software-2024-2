@@ -16,9 +16,13 @@ function Indice({
 
   return (
     <div className="Indice">
-      <h2>BIENVENIDOS A "CLONEBUSTER"</h2>
-      <div className="section">
-        <ul className="section-item">
+      <div className="header-banner">
+        BIENVENIDOS A
+      </div>
+      <Confetti width={width} height={height} />
+      {/* Banner inferior con botones */}
+      <div className="footer-banner">
+        <div className="footer-buttons">
           <Link
             to={{
               pathname: "/usuario",
@@ -27,22 +31,14 @@ function Indice({
           >
             <button>Usuarios</button>
           </Link>
-        </ul>
-      </div>
-      <div className="section">
-        <ul className="section-item">
           <Link
             to={{
               pathname: "/pelicula",
               state: { peliculas, setPeliculas, rentas },
             }}
           >
-            <button>Peliculas</button>
+            <button>Películas</button>
           </Link>
-        </ul>
-      </div>
-      <div className="section">
-        <ul className="section-item">
           <Link
             to={{
               pathname: "/renta",
@@ -51,11 +47,11 @@ function Indice({
           >
             <button>Rentas</button>
           </Link>
-        </ul>
+        </div>
       </div>
-      <Confetti width={width} height={height} />
     </div>
   );
 }
 
 export default Indice;
+

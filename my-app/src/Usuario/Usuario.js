@@ -1,14 +1,17 @@
 import "./Usuario.css";
-
 import React from "react";
 import { Link } from "react-router-dom";
 
 function Usuario({ usuarios, setUsuarios, rentas }) {
   return (
     <div className="Usuario">
-      <h1>Opciones de usuarios</h1>
+      {/* Banner superior */}
+      <div className="banner">
+        <h1></h1>
+      </div>
+      {/* Contenido principal */}
       <div className="section">
-      <ul className="botC">
+        <ul className="botC">
           <Link
             to={{
               pathname: "/usuario/ver",

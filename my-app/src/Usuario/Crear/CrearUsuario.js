@@ -100,9 +100,9 @@ function CrearUsuario({ usuarios, setUsuarios }) {
               <option value={false}>No</option>
               <option value={true}>Sí</option>
             </select>
-            <button type="submit" classnName="regresarBtn">Agregar</button>
+            <button type="submit" className="superUserBtn">Agregar</button>
             <Link to="/usuario">
-              <button className="regresarBtn">Regresar</button>
+              <button className="superUserBtn">Regresar</button>
             </Link>
           </form>
         </div>

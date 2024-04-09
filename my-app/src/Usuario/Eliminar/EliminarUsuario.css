@@ -1,5 +1,5 @@
 .EliminarUsuario {
-    background-color: hsl(203, 55%, 21%);
+    background-color: rgb(58, 58, 59);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
      /* Estilos para el botón de agregar */
      padding: 5px 10px;
      font-size: 1em;
-     background-color: #102f44;
+     background-color: #000000;
      color: white;
      border: none;
      cursor: pointer;
@@ -28,7 +28,7 @@
   }
   
   .botC button:hover {
-    background-color: #142f4d;
+    background-color: #000000;
   }
   
   .Pedir-container {
@@ -71,7 +71,7 @@
   }
   
   .botC button.regresarBtn {
-    background-color: #13485e; /* Nuevo color de fondo para el botón Editar Usuario */
+    background-color: #000000; /* Nuevo color de fondo para el botón Editar Usuario */
   }
   .mensaje-rojo {
     color: red;
