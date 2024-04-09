@@ -1,14 +1,17 @@
 import "./App.css";
-
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Indice from "../Indice/Indice";
-
 import Usuario from "../Usuario/Usuario";
 import LeerUsuario from "../Usuario/Leer/LeerUsuario";
 import CrearUsuario from "../Usuario/Crear/CrearUsuario";
 import EditarUsuario from "../Usuario/Editar/EditarUsuario";
 import EliminarUsuario from "../Usuario/Eliminar/EliminarUsuario";
+import Pelicula from "../Pelicula/Pelicula";
+import LeerPelicula from "../Pelicula/Leer/LeerPelicula";
+import CrearPelicula from "../Pelicula/Crear/CrearPelicula";
+import EditarPelicula from "../Pelicula/Editar/EditarPelicula";
+import EliminarPelicula from "../Pelicula/Eliminar/EliminarPelicula";
 
 function App() {
   const [usuarios, setUsuarios] = useState([
@@ -25,14 +28,14 @@ function App() {
   ]);
 
   const [peliculas, setPeliculas] = useState([
-      { idPelicula: 1, nombre: "La vida secreta de las mascotas", genero: "Animacion", duracion: 90, inventario: 5 },
+      { idPelicula: 1, nombre: "La vida secreta de las mascotas", genero: "Animacion", duracion: 99, inventario: 5 },
       { idPelicula: 2, nombre: "El padrino", genero: "Drama", duracion: 175, inventario: 1 },
       { idPelicula: 3, nombre: "Jurassic Park", genero: "Accion", duracion: 127, inventario: 3 },
       { idPelicula: 4, nombre: "Los increíbles", genero: "Animacion", duracion: 115, inventario: 2 },
       { idPelicula: 5, nombre: "Harry Potter y la piedra filosofal", genero: "Fantasia", duracion: 152, inventario: 4 },
       { idPelicula: 6, nombre: "Forrest Gump", genero: "Drama", duracion: 142, inventario: 1 },
       { idPelicula: 7, nombre: "Matrix", genero: "Ciencia Ficcion", duracion: 136, inventario: 0 },
-      { idPelicula: 8, nombre: "Toy Story", genero: "Animacion", duracion: 81, inventario: 10 },
+      { idPelicula: 8, nombre: "Toy Story", genero: "Animacion", duracion: 181, inventario: 10 },
       { idPelicula: 9, nombre: "El club de la pelea", genero: "Drama", duracion: 139, inventario: 2 },
       { idPelicula: 10, nombre: "La guerra de las galaxias: Episodio IV - Una nueva esperanza", genero: "Ciencia Ficcion", duracion: 121, inventario: 3 }    
   ]);
@@ -53,20 +56,14 @@ function App() {
         <Route
           path="/usuario"
           element={
-            <Usuario
-              usuarios={usuarios}
-              setUsuarios={setUsuarios}
-              rentas={rentas}
+            <Usuario usuarios={usuarios} setUsuarios={setUsuarios} rentas={rentas}
             />
           }
         />
         <Route
           path="/usuario/ver"
           element={
-            <LeerUsuario
-              usuarios={usuarios}
-              setUsuarios={setUsuarios}
-              rentas={rentas}
+            <LeerUsuario usuarios={usuarios} setUsuarios={setUsuarios} rentas={rentas}
             />
           }
         />
@@ -81,13 +78,43 @@ function App() {
         <Route
           path="/usuario/eliminar"
           element={
-            <EliminarUsuario
-              usuarios={usuarios}
-              setUsuarios={setUsuarios}
-              rentas={rentas}
+            <EliminarUsuario usuarios={usuarios} setUsuarios={setUsuarios} rentas={rentas}
             />
           }
-        /> 
+        />
+        <Route
+          path="/pelicula"
+          element={
+            <Pelicula peliculas={peliculas} setPeliculas={setPeliculas} rentas={rentas}
+            />
+          }
+        />
+        <Route
+          path="/pelicula/ver"
+          element={
+            <LeerPelicula peliculas={peliculas} setPeliculas={setPeliculas} rentas={rentas}
+            />
+          }
+        />
+        <Route
+          path="/pelicula/agregar"
+          element={
+            <CrearPelicula peliculas={peliculas} setPeliculas={setPeliculas} />
+          }
+        />
+        <Route
+          path="/pelicula/editar"
+          element={
+            <EditarPelicula peliculas={peliculas} setPeliculas={setPeliculas} />
+          }
+        />
+        <Route
+          path="/pelicula/eliminar"
+          element={
+            <EliminarPelicula peliculas={peliculas} setPeliculas={setPeliculas} rentas={rentas}
+            />
+          }
+        />
       </Routes>
     </Router>
   );

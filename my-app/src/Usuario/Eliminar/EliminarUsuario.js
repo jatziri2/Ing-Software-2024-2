@@ -19,14 +19,13 @@ function EliminarUsuario({ usuarios, setUsuarios, rentas }) {
     const usuarioConRenta = rentas.some(
       (renta) => renta.idUsuario === usuarioSeleccionado.idUsuario
     );
-    if (usuarioConRenta) {
-      return;
+    if (!usuarioConRenta) {
+      const nuevasUsuarios = usuarios.filter(
+        (usuario) => usuario.idUsuario !== usuarioSeleccionado.idUsuario
+      );
+      setUsuarios(nuevasUsuarios);
+      setUsuarioSeleccionado(null);
     }
-    const nuevasUsuarios = usuarios.filter(
-      (usuario) => usuario.idUsuario !== usuarioSeleccionado.idUsuario
-    );
-    setUsuarios(nuevasUsuarios);
-    setUsuarioSeleccionado(null);
   };
 
   const handleCancelarClick = () => {
@@ -43,11 +42,11 @@ function EliminarUsuario({ usuarios, setUsuarios, rentas }) {
       {!usuarioSeleccionado && (
         <div className="Cajita-container">
           <div className="Cajita">
-            <br></br>
+            <br />
             <label htmlFor="usuarioSelect">
               Seleccione un usuario para eliminar
             </label>
-            <br></br>
+            <br />
             <div className="custom-select-container">
               <select
                 className="custom-select"
@@ -80,58 +79,50 @@ function EliminarUsuario({ usuarios, setUsuarios, rentas }) {
       {usuarioSeleccionado && (
         <div className="Cajita-container">
           <div className="Cajita">
-            <p>¿Seguro/a de eliminar al usuario?</p>
-            <p>
-              {usuarioSeleccionado.nombre} {usuarioSeleccionado.apPat}{" "}
-              {usuarioSeleccionado.apMat}{" "}
-            </p>
-            <div className="section">
-              <ul className="botC">
-                {!rentas.some(
-                  (renta) =>
-                    renta.idUsuario === usuarioSeleccionado.idUsuario
-                ) && (
-                  <>
+            {rentas.some((renta) => renta.idUsuario === usuarioSeleccionado.idUsuario) ? (
+              <div>
+                <p className="mensaje-rojo">
+                  El usuario no se puede eliminar, está rentando.
+                </p>
+                <div className="section">
+                  <ul className="botC">
+                    <Link
+                      to={{
+                        pathname: "/usuario",
+                        state: { usuarios, setUsuarios, rentas },
+                      }}
+                    >
+                      <button>Regresar</button>
+                    </Link>
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <>
+                <p>¿Seguro/a de eliminar al usuario?</p>
+                <p>
+                  {usuarioSeleccionado.nombre} {usuarioSeleccionado.apPat}{" "}
+                  {usuarioSeleccionado.apMat}{" "}
+                </p>
+                <div className="section">
+                  <ul className="botC">
                     <button onClick={eliminarUsuario}>Eliminar</button>
                     <button onClick={handleCancelarClick}>Cancelar</button>
-                  </>
-                )}
-                <Link
-                  to={{
-                    pathname: "/usuario",
-                    state: { usuarios, setUsuarios, rentas },
-                  }}
-                >
-                  <button className="regresarBtn">Regresar</button>
-                </Link>
-              </ul>
-            </div>
+                    <Link
+                      to={{
+                        pathname: "/usuario",
+                        state: { usuarios, setUsuarios, rentas },
+                      }}
+                    >
+                      <button className="regresarBtn">Regresar</button>
+                    </Link>
+                  </ul>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
-      {usuarioSeleccionado &&
-        rentas.some(
-          (renta) => renta.idUsuario === usuarioSeleccionado.idUsuario
-        ) && (
-          <div className="Cajita-container">
-            <div className="Cajita">
-              <p className="mensaje-rojo">
-                El usuario no se puede eliminar, está rentando.
-              </p>
-              <div className="section">
-                <ul className="botC">
-                  <Link
-                    to={{
-                      pathname: "/usuario",
-                      state: { usuarios, setUsuarios, rentas },
-                    }}
-                  >
-                  </Link>
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
     </div>
   );
 }
