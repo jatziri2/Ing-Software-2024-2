@@ -8,7 +8,7 @@ function CrearPelicula({ peliculas, setPeliculas }) {
     nombre: "",
     genero: "",
     duracion: "",
-    inventario: 1,
+    inventario: 99,
   });
 
   const [peliculaAgregada, setPeliculaAgregada] = useState(false);

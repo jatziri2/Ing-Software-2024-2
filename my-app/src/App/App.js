@@ -12,6 +12,10 @@ import LeerPelicula from "../Pelicula/Leer/LeerPelicula";
 import CrearPelicula from "../Pelicula/Crear/CrearPelicula";
 import EditarPelicula from "../Pelicula/Editar/EditarPelicula";
 import EliminarPelicula from "../Pelicula/Eliminar/EliminarPelicula";
+import Renta from "../Renta/Renta";
+import LeerRenta from "../Renta/Leer/LeerRenta";
+import CrearRenta from "../Renta/Crear/CrearRenta";
+import EditarRenta from "../Renta/Editar/EditarRenta";
 
 function App() {
   const [usuarios, setUsuarios] = useState([
@@ -112,6 +116,34 @@ function App() {
           path="/pelicula/eliminar"
           element={
             <EliminarPelicula peliculas={peliculas} setPeliculas={setPeliculas} rentas={rentas}
+            />
+          }
+        />
+        <Route
+          path="/renta"
+          element={
+            <Renta usuarios={usuarios} peliculas={peliculas} rentas={rentas} setRentas={setRentas}
+            />
+          }
+        />
+        <Route
+          path="/renta/ver"
+          element={
+            <LeerRenta usuarios={usuarios} peliculas={peliculas}rentas={rentas} setRentas={setRentas}
+            />
+          }
+        />
+        <Route
+          path="/renta/agregar"
+          element={
+            <CrearRenta usuarios={usuarios} peliculas={peliculas} rentas={rentas} setRentas={setRentas}
+            />
+          }
+        />
+        <Route
+          path="/renta/editar"
+          element={
+            <EditarRenta usuarios={usuarios} peliculas={peliculas} rentas={rentas} setRentas={setRentas}
             />
           }
         />

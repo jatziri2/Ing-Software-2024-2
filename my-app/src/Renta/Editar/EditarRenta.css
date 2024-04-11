@@ -1,0 +1,147 @@
+.EditarRenta {
+    background-color: rgb(58, 58, 59);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  h1 {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .botC button {
+     /* Estilos para el botón de agregar */
+     padding: 5px 10px;
+     font-size: 1em;
+     background-color: #0a0a0a;
+     color: white;
+     border: none;
+     cursor: pointer;
+     margin: 5px;
+     border-radius: 5px;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .botC button:hover {
+    background-color: #000000;
+  }
+  
+  .Pedir-container {
+    margin: 20px;
+  }
+  
+  .Pedir {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 80px; /* Ajustamos el padding para hacer el contenedor más grande */
+    border-radius: 10px;
+  }
+  
+  .Pedir label {
+    display: block;
+    margin-bottom: 20px; /* Aumentamos el espacio entre las etiquetas */
+  }
+  
+  .Pedir input[type="checkbox"] {
+    margin-right: 30px; /* Aumentamos el espacio entre el checkbox y el texto */
+  }
+  
+  .Pedir input[type="checkbox"] + label {
+    font-weight: bold; /* Hacemos que el texto del label sea más llamativo */
+  }
+  
+  .Pedir input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .Pedir input:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+  }
+  .Pedir select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white; /* Fondo blanco para el select */
+    color: #333; /* Color de texto oscuro */
+  }
+  
+  .Pedir select:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+  }
+  
+  /* Estilos para el botón de Super Usuario */
+  .Pedir button.superUserBtn {
+    padding: 10px 20px; /* Ajusta el padding del botón */
+    font-size: 1em;
+    background-color: #000000; /* Cambia el color de fondo del botón */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .Pedir button.superUserBtn:hover {
+    background-color: #000000; /* Cambia el color de fondo al pasar el cursor */
+  }
+  /* Agrega estos estilos al final de tu archivo CSS */
+  
+  /* Estilos para el selector de usuario */
+  .Pedir select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white; /* Fondo blanco para el select */
+    color: #333; /* Color de texto oscuro */
+  }
+  
+  .Pedir select:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+  }
+  /* Agrega estos estilos al final de tu archivo CSS */
+  
+  .custom-select-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white; /* Fondo blanco para el select */
+    color: #333; /* Color de texto oscuro */
+  }
+  
+  .custom-select-container select:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+  }
+  
+  .botC button.regresarBtn {
+    background-color: #000000; /* Nuevo color de fondo para el botón Editar Usuario */
+  }
+  
+  
+  
+  
+  
