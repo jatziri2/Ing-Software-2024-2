@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import "./CrearUsuario.css";
 
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 function CrearUsuario({ usuarios, setUsuarios }) {
-  const [usuario, setUsuario] = useState({
-    nombre: "",apPat: "",apMat: "",password: "",email: "",superUser: false,
+  const [usuario, setUsuario] = useState({nombre: "",apPat: "",apMat: "",password: "",email: "",superUser: false,
   });
 
-  const [mensaje, setMensaje] = useState(""); // Estado para controlar los mensajes
+  const [usuarioAgregado, setUsuarioAgregado] = useState(false);
+  const [correoEnUso, setCorreoEnUso] = useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -18,20 +20,26 @@ function CrearUsuario({ usuarios, setUsuarios }) {
     }));
   };
 
+  const verificarCorreoEnUso = () => {
+    return usuarios.some((u) => u.email === usuario.email);
+  };
+
   const agregarUsuario = () => {
-    if (!usuario.nombre || !usuario.apPat || !usuario.email || !usuario.password) {
-      setMensaje("Por favor complete todos los campos.");
-    } else if (usuarios.some((u) => u.email === usuario.email)) {
-      setMensaje("Correo en uso, intente con otro.");
+    if (verificarCorreoEnUso()) {
+      setCorreoEnUso(true);
     } else {
-      const idUsuario = usuarios.length ? usuarios[usuarios.length - 1].idUsuario + 1 : 1;
+      const total = usuarios.length;
+      const ultimoUsuario = usuarios[total - 1];
+      const ultimoId = ultimoUsuario.idUsuario;
+      const idUsuario = ultimoId + 1;
       const nuevoUsuario = { idUsuario, ...usuario };
-      setUsuarios([...usuarios, nuevoUsuario]);
-      setMensaje("Usuario agregado correctamente.");
-      setTimeout(() => {
-        navigate("/usuario");
-      }, 1000);
+      setUsuarios((prevUsuarios) => [...prevUsuarios, nuevoUsuario]);
+      setUsuarioAgregado(true);
     }
+  };
+
+  const handleOkClick = () => {
+    navigate("/usuario");
   };
 
   const handleSubmit = (event) => {
@@ -42,71 +50,122 @@ function CrearUsuario({ usuarios, setUsuarios }) {
   return (
     <div className="CrearUsuario">
       <h1>Agregar Usuario</h1>
-      {mensaje && (
-        <div className="mensaje">
-          <p>{mensaje}</p>
+      <div className="mensaje">
+        {usuarioAgregado && (
+          <div className="caja">
+            <p>Usuario agregado</p>
+            <div className="section">
+              <ul className="botC">
+                <button onClick={handleOkClick}>Regresar</button>
+              </ul>
+            </div>
+          </div>
+        )}
+        {correoEnUso && (
+          <div className="caja">
+            <p>Correo en uso, intente con otro</p>
+            <div className="section">
+              <ul className="botC">
+                <button onClick={() => setCorreoEnUso(false)}>Regresar</button>
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+      {!usuarioAgregado && !correoEnUso && (
+        <div className="Pedir-container">
+          <div className="Pedir">
+            <br />
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="nombre">
+                Nombre<span className="required"></span>:
+              </label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                value={usuario.nombre}
+                onChange={handleChange}
+                required
+              />
+              <br />
+              <label htmlFor="apPat">
+                Apellido Paterno<span className="required"></span>:
+              </label>
+              <input
+                type="text"
+                id="apPat"
+                name="apPat"
+                value={usuario.apPat}
+                onChange={handleChange}
+                required
+              />
+              <br />
+              <label htmlFor="apMat">Apellido Materno:</label>
+              <input
+                type="text"
+                id="apMat"
+                name="apMat"
+                value={usuario.apMat}
+                onChange={handleChange}
+              />
+              <br />
+              <label htmlFor="password">
+                Contraseña<span className="required"></span>:
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={usuario.password}
+                onChange={handleChange}
+                required
+              />
+              <br />
+              <label htmlFor="email">
+                Email<span className="required"></span>:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={usuario.email}
+                onChange={handleChange}
+                required
+              />
+              <br />
+              <label htmlFor="superUser">Super Usuario:</label>
+              <select
+                id="superUser"
+                name="superUser"
+                value={usuario.superUser ? "Sí" : "No"}
+                onChange={handleChange}
+              >
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+              </select>
+              <br />
+              <div className="section">
+                <ul className="botC">
+                  <button>Agregar</button>
+                </ul>
+              </div>
+            </form>
+            <div className="section">
+              <ul className="botC">
+                <Link
+                  to={{
+                    pathname: "/usuario",
+                    state: { usuarios, setUsuarios },
+                  }}
+                >
+                  <button>Regresar</button>
+                </Link>
+              </ul>
+            </div>
+          </div>
         </div>
       )}
-      <div className="Pedir-container">
-        <div className="Pedir">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="nombre">Nombre:</label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              value={usuario.nombre}
-              onChange={handleChange}
-            />
-            <label htmlFor="apPat">Apellido Paterno:</label>
-            <input
-              type="text"
-              id="apPat"
-              name="apPat"
-              value={usuario.apPat}
-              onChange={handleChange}
-            />
-            <label htmlFor="apMat">Apellido Materno:</label>
-            <input
-              type="text"
-              id="apMat"
-              name="apMat"
-              value={usuario.apMat}
-              onChange={handleChange}
-            />
-            <label htmlFor="password">Contraseña:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={usuario.password}
-              onChange={handleChange}
-            />
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={usuario.email}
-              onChange={handleChange}
-            />
-            <label htmlFor="superUser">Super Usuario:</label>
-            <select
-              id="superUser"
-              name="superUser"
-              value={usuario.superUser}
-              onChange={handleChange}
-            >
-              <option value={false}>No</option>
-              <option value={true}>Sí</option>
-            </select>
-            <button type="submit" className="superUserBtn">Agregar</button>
-            <Link to="/usuario">
-              <button className="superUserBtn">Regresar</button>
-            </Link>
-          </form>
-        </div>
-      </div>
     </div>
   );
 }

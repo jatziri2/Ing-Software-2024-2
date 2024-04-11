@@ -1,5 +1,5 @@
 import "./EditarPelicula.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function EditarPelicula({ peliculas, setPeliculas }) {
@@ -8,10 +8,18 @@ function EditarPelicula({ peliculas, setPeliculas }) {
   });
 
   const [peliculaSeleccionada, setPeliculaSeleccionada] = useState(null);
+  const [peliculaOriginal, setPeliculaOriginal] = useState(null);
   const [peliculaEditada, setPeliculaEditada] = useState(false);
   const [datosFaltantes, setDatosFaltantes] = useState(false);
+  const [cambiosRealizados, setCambiosRealizados] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (peliculaSeleccionada) {
+      setPeliculaOriginal({ ...peliculaSeleccionada });
+    }
+  }, [peliculaSeleccionada]);
 
   const handlePeliculaSeleccionada = (event) => {
     const peliculaId = parseInt(event.target.value);
@@ -26,10 +34,15 @@ function EditarPelicula({ peliculas, setPeliculas }) {
       ...prevDatosPelicula,
       [name]: value,
     }));
+    setCambiosRealizados(true);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!cambiosRealizados) {
+      setDatosFaltantes(true);
+      return;
+    }
     const idPelicula = peliculaSeleccionada.idPelicula;
     const peliculaEditada = { idPelicula, ...datosPelicula };
     const nuevasPeliculas = peliculas.map((pelicula) =>
@@ -157,7 +170,7 @@ function EditarPelicula({ peliculas, setPeliculas }) {
                 <br />
                 <div className="section">
                   <ul className="botC">
-                    <button type="submit">Guardar Cambios</button>
+                    <button type="submit" disabled={!cambiosRealizados}>Guardar Cambios</button>
                   </ul>
                 </div>
                 <div className="section">

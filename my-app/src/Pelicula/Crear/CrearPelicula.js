@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./CrearPelicula.css";
 
 function CrearPelicula({ peliculas, setPeliculas }) {
-  const [nuevaPelicula, setNuevaPelicula] = useState({ nombre: "", genero: "", duracion: "", inventario: 99 });
+  const [nuevaPelicula, setNuevaPelicula] = useState({ nombre: "", genero: "", duracion: "", inventario: 1 });
   const [peliculaAgregada, setPeliculaAgregada] = useState(false);
   const navigate = useNavigate();
 
@@ -49,7 +49,7 @@ function CrearPelicula({ peliculas, setPeliculas }) {
                 <label htmlFor="duracion">Duración (mínimo 99 min.):</label>
                 <input type="number" id="duracion" name="duracion" value={nuevaPelicula.duracion} min={99} step={1} onChange={handleChange} /><br />
                 <label htmlFor="inventario">Inventario:</label>
-                <input type="number" id="inventario" name="inventario" value={nuevaPelicula.inventario} min={0} step={1} onChange={handleChange} /><br />
+                <input type="number" id="inventario" name="inventario" value={nuevaPelicula.inventario} min={1} step={1} onChange={handleChange} /><br />
                 <div className="section">
                   <ul className="botCCP"><button type="submit">Agregar</button></ul>
                 </div>

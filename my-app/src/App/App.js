@@ -46,10 +46,10 @@ function App() {
 
   const [rentas, setRentas] = useState([
       { idRentar: 1, idUsuario: 8, idPelicula: 2, fecha_renta: new Date("2023-05-15"), dias_de_renta: 4, estatus: true },
-      { idRentar: 2, idUsuario: 5, idPelicula: 7, fecha_renta: new Date("2022-08-20"), dias_de_renta: 6, estatus: false },
-      { idRentar: 3, idUsuario: 9, idPelicula: 5, fecha_renta: new Date("2023-11-25"), dias_de_renta: 2, estatus: true },
-      { idRentar: 4, idUsuario: 10, idPelicula: 8, fecha_renta: new Date("2024-02-12"), dias_de_renta: 3, estatus: false },
-      { idRentar: 5, idUsuario: 1, idPelicula: 6, fecha_renta: new Date("2022-07-07"), dias_de_renta: 5, estatus: true }
+      { idRentar: 2, idUsuario: 5, idPelicula: 7, fecha_renta: new Date("2025-08-20"), dias_de_renta: 6, estatus: false },
+      { idRentar: 3, idUsuario: 9, idPelicula: 5, fecha_renta: new Date("2022-11-25"), dias_de_renta: 2, estatus: true },
+      { idRentar: 4, idUsuario: 10, idPelicula: 8, fecha_renta: new Date("2025-02-12"), dias_de_renta: 3, estatus: false },
+      { idRentar: 5, idUsuario: 1, idPelicula: 6, fecha_renta: new Date("2024-04-15"), dias_de_renta: 5, estatus: true }
   ]);
 
   return (

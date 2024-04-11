@@ -1,14 +1,22 @@
+import "./EditarUsuario.css"
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./EditarUsuario.css";
 
 function EditarUsuario({ usuarios, setUsuarios }) {
   const [datosUsuario, setDatosUsuario] = useState({
-    nombre: "",apPat: "",apMat: "",password: "",email: "",superUser: false,
+    nombre: "",
+    apPat: "",
+    apMat: "",
+    password: "",
+    email: "",
+    superUser: "No", // Cambiado a un valor por defecto
   });
 
-  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
-  const [mensaje, setMensaje] = useState("");
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(false);
+  const [usuarioModificado, setUsuarioModificado] = useState(false);
+  const [correoEnUso, setCorreoEnUso] = useState(false);
+  const [datosFaltantes, setDatosFaltantes] = useState(false);
+  const [cambiosRealizados, setCambiosRealizados] = useState(false); // Nuevo estado para rastrear cambios
 
   const navigate = useNavigate();
 
@@ -27,13 +35,31 @@ function EditarUsuario({ usuarios, setUsuarios }) {
       ...prevDatosUsuario,
       [name]: type === "checkbox" ? checked : value,
     }));
+    setCambiosRealizados(true); // Marcamos que se han realizado cambios al modificar algún campo
+  };
+
+  const verificarCorreoEnUso = () => {
+    return usuarios.some(
+      (u) =>
+        u.email === datosUsuario.email &&
+        u.idUsuario !== usuarioSeleccionado.idUsuario
+    );
+  };
+
+  const verificarDatosFaltantes = () => {
+    return (
+      datosUsuario.nombre === "" ||
+      datosUsuario.apPat === "" ||
+      datosUsuario.password === "" ||
+      datosUsuario.email === ""
+    );
   };
 
   const modificarUsuario = () => {
-    if (!datosUsuario.nombre || !datosUsuario.apPat || !datosUsuario.password || !datosUsuario.email) {
-      setMensaje("Por favor complete todos los campos.");
-    } else if (usuarios.some((u) => u.email === datosUsuario.email && u.idUsuario !== usuarioSeleccionado.idUsuario)) {
-      setMensaje("El correo electrónico ya está en uso.");
+    if (verificarDatosFaltantes()) {
+      setDatosFaltantes(true);
+    } else if (verificarCorreoEnUso()) {
+      setCorreoEnUso(true);
     } else {
       const index = usuarios.findIndex(
         (usuario) => usuario.idUsuario === usuarioSeleccionado.idUsuario
@@ -41,7 +67,7 @@ function EditarUsuario({ usuarios, setUsuarios }) {
       const idUsuario = usuarioSeleccionado.idUsuario;
       const usuarioModi = { idUsuario, ...datosUsuario };
       usuarios[index] = usuarioModi;
-      setMensaje("Usuario actualizado correctamente.");
+      setUsuarioModificado(true);
     }
   };
 
@@ -51,19 +77,28 @@ function EditarUsuario({ usuarios, setUsuarios }) {
   };
 
   const handleOkClick = () => {
-    setMensaje("");
     navigate("/usuario");
+  };
+
+  const handleOkClick2 = () => {
+    setCorreoEnUso(false);
+  };
+
+  const handleOkClick3 = () => {
+    setDatosFaltantes(false);
   };
 
   return (
     <div className="EditarUsuario">
-      <h1>Editar Usuario</h1>
+      <h1>Modificar Usuario</h1>
       {!usuarioSeleccionado && (
         <div className="mensaje">
           <div className="caja">
-            <br />
-            <label htmlFor="usuarioSelect">Selecciona un usuario para editar</label>
-            <br />
+            <br></br>
+            <label htmlFor="usuarioSelect">
+              Selecciona un usuario para modificar
+            </label>
+            <br></br>
             <div className="custom-select-container">
               <select
                 className="custom-select"
@@ -93,98 +128,150 @@ function EditarUsuario({ usuarios, setUsuarios }) {
           </div>
         </div>
       )}
-      {usuarioSeleccionado && (
-        <div className="formulario">
-          <form onSubmit={handleSubmit}>
-            <div className="Pedir-container">
-              <div className="Pedir">
-                <br />
-                <label htmlFor="nombre">Nombre:</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  value={datosUsuario.nombre}
-                  onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="apPat">Apellido Paterno:</label>
-                <input
-                  type="text"
-                  id="apPat"
-                  name="apPat"
-                  value={datosUsuario.apPat}
-                  onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="apMat">Apellido Materno:</label>
-                <input
-                  type="text"
-                  id="apMat"
-                  name="apMat"
-                  value={datosUsuario.apMat}
-                  onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="password">Contraseña:</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={datosUsuario.password}
-                  onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="email">Email:</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={datosUsuario.email}
-                  onChange={handleChange}
-                />
-                <br />
-                <label htmlFor="superUser">Super Usuario:</label>
-                <select
-                  id="superUser"
-                  name="superUser"
-                  value={datosUsuario.superUser}
-                  onChange={handleChange}
-                >
-                  <option value={false}>No</option>
-                  <option value={true}>Sí</option>
-                </select>
-                <br />
-                <div className="section">
-                  <ul className="botC">
-                    <button type="submit" className="superUserBtn">Guardar Cambios</button>
-                    <Link
-                      to={{
-                        pathname: "/usuario",
-                        state: { usuarios, setUsuarios },
-                      }}
-                    >
-                      <button className="regresarBtn">Regresar</button>
-                    </Link>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      )}
-      {mensaje && (
-        <div className="mensaje">
-          <div className="caja">
-            <p>{mensaje}</p>
+      {usuarioModificado && (
+        <div className="Cajita-container">
+          <div className="Cajita">
+            <p>Usuario modificado</p>
             <div className="section">
               <ul className="botC">
-                <button onClick={handleOkClick}>OK</button>
+                <button onClick={handleOkClick}>Regresar</button>
               </ul>
             </div>
           </div>
         </div>
       )}
+      {correoEnUso && (
+        <div className="Cajita-container">
+          <div className="Cajita">
+            <p>Correo en uso, intente con otro</p>
+            <div className="section">
+              <ul className="botC">
+                <button onClick={handleOkClick2}>Regresar</button>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
+      {datosFaltantes && (
+        <div className="Cajita-container">
+          <div className="Cajita">
+            <p>
+              Por favor complete los campos de nombre, apellido paterno,
+              contraseña y correo electrónico
+            </p>
+            <div className="section">
+              <ul className="botC">
+                <button onClick={handleOkClick3}>Regresar</button>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
+      {usuarioSeleccionado &&
+        !usuarioModificado &&
+        !correoEnUso &&
+        !datosFaltantes && (
+          <div className="formulario">
+            <form onSubmit={handleSubmit}>
+              <div className="Pedir-container">
+                <div className="Pedir">
+                  <br></br>
+                  <label htmlFor="nombre">
+                    Nombre<span className="required">*</span>:
+                  </label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    value={datosUsuario.nombre}
+                    onChange={handleChange}
+                    required
+                  />
+                  <br></br>
+                  <label htmlFor="apPat">
+                    Apellido Paterno<span className="required">*</span>:
+                  </label>
+                  <input
+                    type="text"
+                    id="apPat"
+                    name="apPat"
+                    value={datosUsuario.apPat}
+                    onChange={handleChange}
+                    required
+                  />
+                  <br></br>
+                  <label htmlFor="apMat">Apellido Materno:</label>
+                  <input
+                    type="text"
+                    id="apMat"
+                    name="apMat"
+                    value={datosUsuario.apMat}
+                    onChange={handleChange}
+                  />
+                  <br></br>
+                  <label htmlFor="password">
+                    Contraseña<span className="required">*</span>:
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={datosUsuario.password}
+                    onChange={handleChange}
+                    required
+                  />
+                  <br></br>
+                  <label htmlFor="email">
+                    Email<span className="required">*</span>:
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={datosUsuario.email}
+                    onChange={handleChange}
+                    required
+                  />
+                  <br></br>
+                  <label htmlFor="superUser">Super Usuario:</label>
+                  <select
+                    id="superUser"
+                    name="superUser"
+                    value={datosUsuario.superUser}
+                    onChange={handleChange}
+                  >
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </select>
+                  <br></br>
+                  <div className="section">
+                    <ul className="botC">
+                      <button
+                        type="button"
+                        onClick={handleSubmit}
+                        disabled={!cambiosRealizados} // Deshabilita el botón si no hay cambios realizados
+                      >
+                        Guardar Cambios
+                      </button>
+                    </ul>
+                  </div>
+                  <div className="section">
+                    <ul className="botC">
+                      <Link
+                        to={{
+                          pathname: "/usuario",
+                          state: { usuarios, setUsuarios },
+                        }}
+                      >
+                        <button>Regresar</button>
+                      </Link>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        )}
     </div>
   );
 }
