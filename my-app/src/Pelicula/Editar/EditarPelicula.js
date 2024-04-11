@@ -91,7 +91,7 @@ function EditarPelicula({ peliculas, setPeliculas }) {
             <p>Película editada</p>
             <div className="section">
               <ul className="botC">
-                <button onClick={handleOkClick}>OK</button>
+                <button onClick={handleOkClick}>Regresar</button>
               </ul>
             </div>
           </div>
@@ -103,7 +103,7 @@ function EditarPelicula({ peliculas, setPeliculas }) {
             <p>Por favor complete los campos de nombre e inventario</p>
             <div className="section">
               <ul className="botC">
-                <button onClick={handleOkClick3}>OK</button>
+                <button onClick={handleOkClick3}>Regresar</button>
               </ul>
             </div>
           </div>
