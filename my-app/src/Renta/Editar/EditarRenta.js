@@ -71,15 +71,9 @@ function EditarRenta({ rentas, setRentas }) {
             <div className="Pedir-container">
               <div className="Pedir">
                 <br />
-                <label htmlFor="idUsuario">ID del Usuario:</label>
-                <input type="text" id="idUsuario" name="idUsuario" value={datosRenta.idUsuario} readOnly /><br />
-                <label htmlFor="idPelicula">ID de la Película:</label>
-                <input type="text" id="idPelicula" name="idPelicula" value={datosRenta.idPelicula} readOnly /><br />
-                <label htmlFor="fecha_renta">Fecha de Renta:</label>
-                <input type="text" id="fecha_renta" name="fecha_renta" value={fechaFormateada(datosRenta.fecha_renta)} readOnly /><br />
-                <label htmlFor="dias_de_renta">Días de Renta:</label>
-                <input type="number" id="dias_de_renta" name="dias_de_renta" value={Math.max(1, datosRenta.dias_de_renta)} onChange={cambiarDatosRenta} /><br />
-                <label htmlFor="estatus">Estado:</label>
+                <p> ID de renta: {rentaSeleccionada.idRentar}</p>
+                <p> ID de Usuario: {rentaSeleccionada.idUsuario}</p>
+                <p> ID de Pelicula: {rentaSeleccionada.idPelicula}</p>
                 <select id="estatus" name="estatus" value={datosRenta.estatus ? "ENTREGADA" : "SIN ENTREGAR"} onChange={cambiarDatosRenta}>
                   <option value="ENTREGADA">Entregada</option>
                   <option value="SIN ENTREGAR">Sin Entregar</option>

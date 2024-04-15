@@ -11,7 +11,7 @@ const LeerRenta = ({ rentas }) => {
     return fecha.toLocaleDateString();
   };
 
-  const isTimedOut = (renta) => {
+  const rentaVencida = (renta) => {
     let rentDate = new Date(renta.fecha_renta);
     let today = new Date();
     let diff = today - rentDate;
@@ -40,7 +40,7 @@ const LeerRenta = ({ rentas }) => {
             {rentas.map((renta) => (
               <tr
                 key={renta.idRentar}
-                style={{ color: isTimedOut(renta) ? "red" : "inherit" }} // Aquí se cambia el color a rojo si la renta está vencida
+                style={{ color: rentaVencida(renta) ? "red" : "inherit" }} // Aquí se cambia el color a rojo si la renta está vencida
               >
                 <td>{renta.idRentar}</td>
                 <td>{renta.idUsuario}</td>
